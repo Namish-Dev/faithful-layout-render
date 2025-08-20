@@ -1,10 +1,18 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { StarLogo } from "@/components/StarLogo";
 
 const Index = () => {
   const [projectIdea, setProjectIdea] = useState("");
+  const navigate = useNavigate();
+
+  const handleGenerateMilestones = () => {
+    if (projectIdea.trim()) {
+      navigate("/dashboard");
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
@@ -52,6 +60,7 @@ const Index = () => {
 
           <Button 
             size="lg"
+            onClick={handleGenerateMilestones}
             className="w-full h-16 text-lg font-semibold bg-gradient-button text-black hover:shadow-glow-cyan transition-all duration-300 rounded-2xl"
           >
             Generate Milestones
